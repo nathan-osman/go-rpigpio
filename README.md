@@ -9,6 +9,8 @@ This package provides a really simple interface for interacting with the GPIO pi
 
 The following example demonstrates writing to GPIO2:
 
+    import "github.com/nathan-osman/go-rpigpio"
+
     p, err := rpi.OpenPin(2, rpi.OUT)
     if err != nil {
         panic(err)
@@ -16,7 +18,7 @@ The following example demonstrates writing to GPIO2:
     defer p.Close()
 
     // set the pin to high (on)
-    rpi.Write(rpi.HIGH)
+    p.Write(rpi.HIGH)
 
     // set the pin to low (off)
-    rpi.Write(rpi.LOW)
+    p.Write(rpi.LOW)
