@@ -113,6 +113,11 @@ func OpenPin(number int, direction Direction) (*Pin, error) {
 
 // Read the current value of the pin.
 func (p *Pin) Read() (Value, error) {
+	// seek to beginning of file in case we've read it before
+	if _, err := p.value.Seek(0, 0); err != nil {
+		return LOW, err
+	}
+
 	d, err := ioutil.ReadAll(p.value)
 	if err != nil {
 		return LOW, err
