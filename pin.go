@@ -43,7 +43,7 @@ func setPinExport(number int, export bool) error {
 	} else {
 		filename = "/sys/class/gpio/unexport"
 	}
-	f, err := os.OpenFile(filename, os.O_WRONLY, 0)
+	f, err := os.OpenFile(filename, os.O_WRONLY, 0777)
 	if err != nil {
 		return err
 	}
